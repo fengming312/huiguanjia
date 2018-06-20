@@ -1,0 +1,13 @@
+{
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wxa3f8a4cc580bbfcf",
+	"projectname": "%E6%85%A7%E8%8E%9E%E5%AE%B6",
+	"libVersion": "2.0.9",
+	"condition": {}
+}
