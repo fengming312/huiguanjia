@@ -1,0 +1,47 @@
+<!--pages/topic-list/topic-list.wxml-->
+<include src="/commons/navbar/navbar"/>
+<view class="after-navber">	
+	<view >
+	    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+	    	<block wx:for="{{cats}}">
+	        <view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" data-current_catid="{{item.id}}" bindtap="swichNav">{{item.title}}</view>
+	        </block>
+	    </scroll-view>
+	    <swiper class="tab-content" current="{{currentTab}}"  duration="300" bindchange="switchTab"
+	     style="height:{{winHeight}}rpx">
+	        <swiper-item wx:for="{{cats}}" data-current_catid="{{item.id}}">
+	            <scroll-view scroll-y="true" class="scoll-h list" >
+	                <block wx:for="{{list}}" wx:key="*this">
+	                    <navigator wx:if="{{item.layout==0}}" class="item layout-0" url="/pages/topic/topic?id={{item.id}}">
+			                <view class="flex-row">
+			                    <view class="flex-grow-1 flex-col">
+			                        <view class="flex-grow-1">
+			                            <view class="title">{{item.title}}</view>
+			                        </view>
+			                        <view class="flex-grow-0 read-count">{{item.read_count}}</view>
+			                    </view>
+			                    <view class="flex-grow-0" style="position: relative">
+			                        <image class="cover-pic" mode="aspectFill" src="{{item.cover_pic}}"></image>
+			                        <view class="goods-count" wx:if="{{item.goods_count}}">{{item.goods_count}}</view>
+			                    </view>
+			                </view>
+			            </navigator>
+			
+			            <navigator wx:if="{{item.layout==1}}" class="item layout-1" url="/pages/topic/topic?id={{item.id}}">
+			                <view class="title" style="font-size: 12pt;font-weight: 600">{{item.title}}</view>
+			                <image class="cover-pic" mode="aspectFill" src="{{item.cover_pic}}"></image>
+			                <view class="flex-row">
+			                    <view class="flex-grow-1 read-count">{{item.read_count}}</view>
+			                    <view class="flex-grow-0 goods-count" wx:if="{{item.goods_count}}">{{item.goods_count}}</view>
+			                </view>
+			            </navigator>
+	                </block>
+	            </scroll-view>
+	        </swiper-item>
+	    </swiper>
+	    <view class="no-content" wx:if="{{!is_loading && (!list || list.length==0)}}">暂无内容</view>
+	    <view class="loading-more {{is_loading?'active':'hide'}}" >
+	        <image src="/images/loading.svg"></image>
+	    </view>
+	</view>
+</view>

@@ -1,0 +1,2 @@
+
+<button style="width: 200rpx;height: 70rpx;position: fixed;left: 50%;top:50%;margin-left: -100rpx;margin-top: -35rpx;z-index:3000;line-height: 70rpx;background-color: #21B922;color: #fff" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击授权</button>
